@@ -1,7 +1,3 @@
-int sum = 0;
-int randy;
-int randh;
-
 void setup()
 {
   size(300,300);
@@ -27,7 +23,10 @@ void draw()
   rect(0,220,300,100);
   
   Die firstDie;
-  sum = 0;
+  int sum = 0;
+  int randy;
+  int randh;
+  
   for(int i = 0; i<10; i++){
     randh = (int)(Math.random()*20)+30;
     randy = (int)(Math.random()*80)+220;
@@ -76,24 +75,18 @@ class Die //models one single dice cube
     endShape(CLOSE);
     
     fill(60,30,100);
-    if(roll == 1){
-      ellipse(x+w/2,y+h/2,w/5,h/5);
+    if(roll%2 == 1){
+      ellipse(x+w/2,y+h/2,w/4,h/4);
     }
-    else{
-      ellipse(x+w*1/5,y+h*4/5,w/5,h/5);
-      ellipse(x+w*4/5,y+h*1/5,w/5,h/5);
-      if(roll == 3){
-        ellipse(x+w/2,y+h/2,w/5,h/5);
-      }
-      else if(roll >= 4){
-        ellipse(x+w*1/5,y+h*1/5,w/5,h/5);
-        ellipse(x+w*4/5,y+h*4/5,w/5,h/5);
-        if(roll == 5){
-          ellipse(x+w/2,y+h/2,w/5,h/5);
-        }
-        else if(roll == 6){
-          ellipse(x+w*1/5,y+h/2,w/5,h/5);
-          ellipse(x+w*4/5,y+h/2,w/5,h/5);
+    if(roll>=2){
+      ellipse(x+w*1/4,y+h*4/4,w/4,h/4);
+      ellipse(x+w*4/4,y+h*1/4,w/4,h/4);
+      if(roll >= 4){
+        ellipse(x+w*1/4,y+h*1/4,w/4,h/4);
+        ellipse(x+w*4/4,y+h*4/4,w/4,h/4);
+        if(roll == 6){
+          ellipse(x+w*1/4,y+h/2,w/4,h/4);
+          ellipse(x+w*4/4,y+h/2,w/4,h/4);
         }
       }
     }
