@@ -81,14 +81,14 @@ class Die //models one single dice cube
       ellipse(x+w/2,y+h/2,w/4,h/4);
     }
     if(roll>=2){
-      ellipse(x+w*1/4,y+h*4/4,w/4,h/4);
-      ellipse(x+w*4/4,y+h*1/4,w/4,h/4);
+      ellipse(x+w*1/4,y+h*3/4,w/4,h/4);
+      ellipse(x+w*3/4,y+h*1/4,w/4,h/4);
       if(roll >= 4){
         ellipse(x+w*1/4,y+h*1/4,w/4,h/4);
-        ellipse(x+w*4/4,y+h*4/4,w/4,h/4);
+        ellipse(x+w*3/4,y+h*3/4,w/4,h/4);
         if(roll == 6){
           ellipse(x+w*1/4,y+h/2,w/4,h/4);
-          ellipse(x+w*4/4,y+h/2,w/4,h/4);
+          ellipse(x+w*3/4,y+h/2,w/4,h/4);
         }
       }
     }
