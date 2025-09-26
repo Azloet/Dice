@@ -27,13 +27,11 @@ void draw()
   Die firstDie;
   sum = 0;
   int randy;
-  int randh;
   
   for(int i = 0; i<10; i++){
-    randh = (int)(Math.random()*20)+30;
     randy = (int)(Math.random()*80)+220;
-    for(int j = 1; j<=3; j++){
-      firstDie = new Die(30*i + 5,randy-(randh*j),20,randh,30,0,20);
+    for(int j = 1; j<=(int)(Math.random()*8)+2; j++){
+      firstDie = new Die(30*i + 5,randy-(j*20),20,20,30,0,30);
       firstDie.roll();
       firstDie.show();
     }
