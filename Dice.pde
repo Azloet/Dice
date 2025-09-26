@@ -13,24 +13,24 @@ void draw()
 {
   background(210,25,100);
   noStroke();
-  for(int i = 0; i<=100; i++){
+  for(int i = 0; i<=100; i+=1){
     fill(210+i*30/100,25+i*25/100,100);
     rect(0,0,300,200-i*200/100);
   }
-  for(int i = 0; i<=100; i++){
+  for(int i = 0; i<=100; i+=1){
     fill(30,50+i*50/100,100,i*20/100);
     rect(0,150+i*150/100,300,150-i*150/100);
   }
   fill(60,10,100);
   circle(150,100,100);
   fill(30,20,60);
-  rect(0,200,300,100);
+  rect(0,220,300,100);
   
   Die firstDie;
   sum = 0;
   for(int i = 0; i<10; i++){
     randh = (int)(Math.random()*20)+30;
-    randy = (int)(Math.random()*100)+200;
+    randy = (int)(Math.random()*80)+220;
     for(int j = 1; j<=3; j++){
       firstDie = new Die(30*i + 5,randy-(randh*j),20,randh,30,0,20);
       firstDie.roll();
