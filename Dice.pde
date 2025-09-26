@@ -1,3 +1,5 @@
+int sum;
+
 void setup()
 {
   size(300,300);
@@ -23,7 +25,7 @@ void draw()
   rect(0,220,300,100);
   
   Die firstDie;
-  int sum = 0;
+  sum = 0;
   int randy;
   int randh;
   
