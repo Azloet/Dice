@@ -22,7 +22,7 @@ void draw()
     rect(0,150+i*150/100,300,150-i*150/100);
   }
   fill(60,10,100);
-  ellipse(150,100,100,100);
+  ellipse(150,200,100,100);
   fill(30,20,60);
   rect(0,220,300,100);
   
@@ -75,7 +75,7 @@ class Die //models one single dice cube
     vertex(x,y+h);
     endShape(CLOSE);
     
-    fill(0,0,0);
+    fill(60,30,100);
     if(roll == 1){
       ellipse(x+w/2,y+h/2,w/5,h/5);
     }
