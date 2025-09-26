@@ -1,29 +1,101 @@
+int sum = 0;
+int randy;
+int randh;
+
 void setup()
 {
-	noLoop();
+  size(300,300);
+  noLoop();
+  colorMode(HSB,360,100,100,100);
 }
+
 void draw()
 {
-	//your code here
+  background(210,25,100);
+  noStroke();
+  for(int i = 0; i<=100; i++){
+    fill(210+i*30/100,25+i*25/100,100);
+    rect(0,0,300,200-i*200/100);
+  }
+  for(int i = 0; i<=100; i++){
+    fill(30,50+i*50/100,100,i*20/100);
+    rect(0,150+i*150/100,300,150-i*150/100);
+  }
+  fill(60,10,100);
+  circle(150,100,100);
+  fill(30,20,60);
+  rect(0,200,300,100);
+  
+  Die firstDie;
+  sum = 0;
+  for(int i = 0; i<10; i++){
+    randh = (int)(Math.random()*20)+30;
+    randy = (int)(Math.random()*100)+200;
+    for(int j = 1; j<=3; j++){
+      firstDie = new Die(30*i + 5,randy-(randh*j),20,randh,30,0,20);
+      firstDie.roll();
+      firstDie.show();
+    }
+  }
+  fill(0,0,0);
+  text("Sum = " + sum,30,30);
 }
+
 void mousePressed()
 {
-	redraw();
+  redraw();
 }
+
 class Die //models one single dice cube
 {
-	//variable declarations here
-	
-	Die(int x, int y) //constructor
-	{
-		//variable initializations here
-	}
-	void roll()
-	{
-		//your code here
-	}
-	void show()
-	{
-		//your code here
-	}
+  int roll;
+  int x,y,w,h,hue,s,v;  
+  Die(int a, int b, int c, int d, int e, int f, int g) //constructor
+  {
+    x = a;
+    y = b;
+    w = c;
+    h = d;
+    hue = e;
+    s = f;
+    v = g;
+  }
+  void roll()
+  {  
+    roll = (int)(Math.random()*6)+1;
+    sum += roll;
+  }
+  void show()
+  {
+    fill(hue,s,v);
+    beginShape();
+    vertex(x,y);
+    vertex(x+w,y);
+    vertex(x+w,y+h);
+    vertex(x,y+h);
+    endShape(CLOSE);
+    
+    fill(0,0,0);
+    if(roll == 1){
+      ellipse(x+w/2,y+h/2,w/5,h/5);
+    }
+    else{
+      ellipse(x+w*1/5,y+h*4/5,w/5,h/5);
+      ellipse(x+w*4/5,y+h*1/5,w/5,h/5);
+      if(roll == 3){
+        ellipse(x+w/2,y+h/2,w/5,h/5);
+      }
+      else if(roll >= 4){
+        ellipse(x+w*1/5,y+h*1/5,w/5,h/5);
+        ellipse(x+w*4/5,y+h*4/5,w/5,h/5);
+        if(roll == 5){
+          ellipse(x+w/2,y+h/2,w/5,h/5);
+        }
+        else if(roll == 6){
+          ellipse(x+w*1/5,y+h/2,w/5,h/5);
+          ellipse(x+w*4/5,y+h/2,w/5,h/5);
+        }
+      }
+    }
+  }
 }
