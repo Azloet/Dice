@@ -19,13 +19,13 @@ void draw()
     fill(30,50+i*50/100,100,i*20/100);
     rect(0,150+i*150/100,300,150-i*150/100);
   }
-  for(int r = 0; r<=25; r+=1){
-    fill(60,10,100,100-20*Math.sqrt(r));
+  for(int r = 0; r<=100; r+=1){
+    fill(60,5,100,100-10*Math.sqrt(r));
     ellipse(150,150,100+r,100+r);
   }
-  for(int i = 0; i<=25; i+=1){
-    fill(30,20,50,100-20*Math.sqrt(i));
-    rect(0,225-i,300,75+i);
+  for(int i = 0; i<=16; i+=1){
+    fill(30,20,50,100-25*Math.sqrt(i));
+    rect(0,250-i,300,50+i);
   }
   
   Die firstDie;
@@ -33,7 +33,7 @@ void draw()
   int randy;
   
   for(int i = 0; i<10; i++){
-    randy = (int)(Math.random()*80)+220;
+    randy = (int)(Math.random()*50)+250;
     for(int j = 1; j<=(int)(Math.random()*8)+2; j++){
       firstDie = new Die(30*i + 5,randy-(j*20),20,20,30,0,30);
       firstDie.roll();
