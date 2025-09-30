@@ -10,28 +10,33 @@ void setup()
 void draw()
 {
   background(210,25,100);
-  noStroke();
+  noFill();
+  //blue sky
   for(int i = 0; i<=100; i+=1){
-    fill(210+i*30/100,25+i*25/100,100-i*50/100);
-    rect(0,0,300,200-i*200/100);
+    stroke(240-i*30/100,50-i*25/100,100);
+    rect(-1,-1,301,i*150/100);
   }
-  for(int i = 0; i<=100; i+=1){
-    fill(30+i*15/100,10+i*90/100,100,i*10/100);
-    rect(0,150+i*100/100,300,100-i*100/100);
+  //orange sky
+  for(int i = 0; i<=75; i+=1){
+    stroke(30+i*15/75,30+i*70/75,100,i*100/75);
+    rect(-1,-1,301,101+i*150/75);
   }
-  for(int r = 0; r<=25; r+=1){
-    fill(60,5,100,100-20*Math.sqrt(r));
-    ellipse(150,150,100+r,100+r);
+  //sun
+  for(int r = 0; r<=100; r+=1){
+    stroke(60,5,100,100-r*100/100);
+    ellipse(150,150,r,r);
   }
-  for(int i = 0; i<=16; i+=1){
-    fill(30,0,50,100-25*Math.sqrt(i));
-    rect(0,250-i,300,50+i);
+  //floor
+  for(int i = 0; i<=25; i+=1){
+    stroke(30,0,50,100);
+    rect(-1,-1,301,251+i*50/25);
   }
   
+  //dice
   Die firstDie;
   sum = 0;
   int randy;
-  
+  noStroke();
   for(int i = 0; i<10; i++){
     randy = (int)(Math.random()*50)+250;
     for(int j = 1; j<=(int)(Math.random()*8)+2; j++){
@@ -40,6 +45,8 @@ void draw()
       firstDie.show();
     }
   }
+  
+  //sum
   fill(0,0,0);
   text("Sum = " + sum,30,30);
 }
