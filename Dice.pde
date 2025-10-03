@@ -1,4 +1,7 @@
 int sum;
+int parity = 0;
+float hueShift;
+int time = 1;
 
 void setup()
 {
@@ -12,24 +15,42 @@ void draw()
   background(210,25,100);
   noFill();
   //blue sky
-  for(int i = 0; i<=100; i+=1){
-    stroke(240-i*30/100,50-i*25/100,100);
-    rect(-1,-1,301,i*150/100);
+  hueShift = 20+15*sin((float)time*2*PI/8);
+  for(int i = 0; i<=75-(1-parity); i+=1){
+    stroke(210+hueShift-i*hueShift/75,50-i*25/75,100);
+    rect(-10,-10,320,10+(1-parity)+i*150/75);
+  }
+  hueShift = 20+15*sin((float)time*2*PI/8);
+  for(int i = 0; i<=75-parity; i+=1){
+    stroke(210+hueShift-i*hueShift/75,50-i*25/75,100);
+    rect(-10,-10,320,10+parity+i*150/75);
   }
   //orange sky
-  for(int i = 0; i<=75; i+=1){
-    stroke(30+i*15/75,30+i*70/75,100,i*100/75);
-    rect(-1,-1,301,101+i*150/75);
+  hueShift = -10+15*sin((float)time*2*PI/8);
+  for(int i = 0; i<=50-parity; i+=1){
+    stroke(40+hueShift-i*hueShift/50,30+i*70/50,100,i*100/50);
+    rect(-10,-10,320,160+parity+i*100/50);
+  }
+  hueShift = 10+15*sin((float)time*2*PI/8);
+  for(int i = 0; i<=50-(1-parity); i+=1){
+    stroke(40+hueShift-i*hueShift/50,30+i*70/50,100,i*100/50);
+    rect(-10,-10,320,160+(1-parity)+i*100/50);
   }
   //sun
   for(int r = 0; r<=100; r+=1){
-    stroke(60,5,100,100-r*100/100);
+    stroke(60,10,100,(100-r)*sqrt(time));
     ellipse(150,150,r,r);
   }
   //floor
-  for(int i = 0; i<=25; i+=1){
-    stroke(30,0,50,100);
-    rect(-1,-1,301,251+i*50/25);
+  hueShift = 30+10*sin((float)time*2*PI/8);
+  for(int i = 0; i<=25-(1-parity); i+=1){
+    stroke(hueShift,20,60-sqrt(time));
+    rect(-10,-10,320,260+1*(1-parity)+i*50/25);
+  }
+  hueShift = 30+10*sin((float)time*2*PI/8);
+  for(int i = 0; i<=25-parity; i+=1){
+    stroke(hueShift,10,60-sqrt(time));
+    rect(-10,-10,320,260+1*parity+i*50/25);
   }
   
   //dice
@@ -53,6 +74,8 @@ void draw()
 
 void mousePressed()
 {
+  parity = 1 - parity;
+  time+=1;
   redraw();
 }
 
